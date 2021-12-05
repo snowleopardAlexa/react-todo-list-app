@@ -14,10 +14,10 @@ function TodoForm(props) {
       e.preventDefault();
 
     // generates random number within 10000 or less rage - id 
-    //  props.onSubmit({
-    //      id: Math.floor(Math.random() * 10000),
-    //      text: input
-    //  });
+     props.onSubmit({
+          id: Math.floor(Math.random() * 10000),
+          text: input
+     });
 
     // makes input invisible after clicking btn  
       setInput('')

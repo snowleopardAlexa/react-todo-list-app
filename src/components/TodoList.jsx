@@ -3,12 +3,23 @@ import TodoForm from './TodoForm';
 
 function TodoList() {
 
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState([]);
+
+    const addTodo = todo => {
+        if(!todo.text || /^\s*$/.test(todo.text)) {
+            return
+        }
+
+        const newTodos = [todo, ...todos]
+
+        setTodos(newTodos)
+        console.log(...todos);
+    }
 
     return (
         <div className="todo-list">
-            <h1>What are the tasks for today?</h1>
-            <TodoForm />
+            <h1>Alexa, what are you going to do today?</h1>
+            <TodoForm onSubmit={addTodo} />
         </div>
     )
 }
