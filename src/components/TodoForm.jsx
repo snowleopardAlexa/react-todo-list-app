@@ -1,8 +1,14 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function TodoForm(props) {
 
     const [input, setInput] = useState('');
+
+    const inputRef = useRef(null)
+
+    useEffect(() => {
+      inputRef.current.focus()
+    })
 
     // type text into input
     const handleChange = e => {
@@ -14,10 +20,10 @@ function TodoForm(props) {
       e.preventDefault();
 
     // generates random number within 10000 or less rage - id 
-    //  props.onSubmit({
-    //      id: Math.floor(Math.random() * 10000),
-    //      text: input
-    //  });
+     props.onSubmit({
+          id: Math.floor(Math.random() * 10000),
+          text: input
+     });
 
     // makes input invisible after clicking btn  
       setInput('')
@@ -33,6 +39,7 @@ function TodoForm(props) {
                   name="text" 
                   className="todo-input"
                   onChange={handleChange}
+                  ref={inputRef}
                 />
             <button className='todo-btn'>button</button>
             </form>
