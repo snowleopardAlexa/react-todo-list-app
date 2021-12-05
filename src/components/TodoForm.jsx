@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 function TodoForm(props) {
-
-    const [input, setInput] = useState('');
+    // keeps typed todo inside input while on change mode
+    const [input, setInput] = useState(props.edit ? props.edit.value : '');
 
     // make input focus 
     const inputRef = useRef(null)
@@ -32,18 +32,37 @@ function TodoForm(props) {
 
     return (
         <div>
-            <form className="todo-form" onSubmit={handleSubmit}>
-                <input 
-                  type="text" 
-                  placeholder="Add a todo" 
-                  value={input} 
-                  name="text" 
-                  className="todo-input"
-                  onChange={handleChange}
-                  ref={inputRef}
-                />
-            <button className='todo-btn'>button</button>
-            </form>
+           <form onSubmit={handleSubmit} className='todo-form'>
+      {props.edit ? (
+        <>
+          <input
+            placeholder='Update your item'
+            value={input}
+            onChange={handleChange}
+            name='text'
+            ref={inputRef}
+            className='todo-input edit'
+          />
+          <button onClick={handleSubmit} className='todo-btn edit'>
+            Update
+          </button>
+        </>
+      ) : (
+        <>
+          <input
+            placeholder='Add a todo'
+            value={input}
+            onChange={handleChange}
+            name='text'
+            className='todo-input'
+            ref={inputRef}
+          />
+          <button onClick={handleSubmit} className='todo-btn'>
+            Add todo
+          </button>
+        </>
+      )}
+    </form>
         </div>
     )
 }
