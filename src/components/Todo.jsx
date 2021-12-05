@@ -36,7 +36,7 @@ return todos.map((todo, index) => (
            className='delete-icon'
         />
         <TiEdit 
-            onClick={() => ""}
+            onClick={() => setEdit({ id: todo.id, value: todo.text})}
             className='edit-icon'
         />
     </div>
