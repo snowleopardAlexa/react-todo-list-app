@@ -143,3 +143,15 @@
   .edit-icon {
     color: #fff;
   }
+
+  @media only screen and (max-width: 600px) {
+    h1 {
+      font-size: 1rem;
+    }
+    .todo-app {
+      width: 95%;
+    }
+    .todo-btn {
+      margin-top: 20px;
+    }
+  }
