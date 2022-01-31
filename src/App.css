@@ -151,6 +151,9 @@
     .todo-app {
       width: 95%;
     }
+    .todo-input {
+      width: 300px;
+    }
     .todo-btn {
       margin-top: 20px;
     }
